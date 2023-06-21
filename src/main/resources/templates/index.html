@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css" href="/resources/static/css/main.css"/>
+</head>
+<body id="top">
+
+<!-- Header -->
+<header id="header">
+    <div class="content">
+        <h1><a href="#">Pharmacy Management System</a></h1>
+        <p>Just a simple app, where you<br />
+            receive medicines </p>
+        <ul class="actions">
+            <li><a href="/user/saveUser/signup" >Register</a></li>
+            <li><a href="/user/logged/get" >Login</a></li>
+        </ul>
+    </div>
+    <div class="image phone"><div class="inner"><img src="" alt="" /></div></div>
+</header>
+
+<!-- One -->
+<section id="one" class="wrapper style2 special">
+    <header class="major">
+        <h2>Active users<br /></h2>
+    </header>
+</section>
+<!-- Two -->
+<section id="two" class="wrapper">
+    <div class="inner alt">
+        <div th:switch="${users}">
+            <h2 th:case="null">No users yet!</h2>
+            <div th:case="*">
+                <section class="spotlight" th:each="user : ${users}">
+                    <div class="image"><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="" /></div>
+                    <div class="content">
+                        <h3 th:text="${user.getEmail()}"></h3>
+                        <p th:text="${user.getFirstName()}"></p>
+                        <p th:text="${user.getSecondName()}"></p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Four
+<section id="four" class="wrapper">
+    <div class="inner">
+        <section>
+            <h4>Form</h4>
+            <form method="post" action="#">
+                <div class="row uniform">
+                    <div class="6u 12u$(xsmall)">
+                        <input type="text" name="demo-name" id="firstName" value="" placeholder="Name" />
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        <input type="email" name="demo-email" id="email" value="" placeholder="Email" />
+                    </div>
+                    <div class="12u$">
+                        <div class="select-wrapper">
+                            <select name="demo-category" id="demo-category">
+                                <option value="">- Gender -</option>
+                                <option value="1">Male</option>
+                                <option value="1">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="6u 12u$(xsmall)">
+                        <input type="text" name="demo-name" id="gender" value="" placeholder="Name" />
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        <input type="email" name="demo-email" id="date" value="" placeholder="Email" />
+                    </div>
+                    <div class="6u 12u$(xsmall)">
+                        <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+                    </div>
+
+                    <div class="4u 12u$(small)">
+                        <input type="radio" id="demo-priority-low" name="demo-priority" checked>
+                        <label for="demo-priority-low">Low</label>
+                    </div>
+                    <div class="4u 12u$(small)">
+                        <input type="radio" id="demo-priority-normal" name="demo-priority">
+                        <label for="demo-priority-normal">Normal</label>
+                    </div>
+                    <div class="4u$ 12u$(small)">
+                        <input type="radio" id="demo-priority-high" name="demo-priority">
+                        <label for="demo-priority-high">High</label>
+                    </div>
+
+
+                    <div class="12u$">
+                        <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+                    </div>
+                    <div class="12u$">
+                        <ul class="actions">
+                            <li><input type="submit" value="Send Message" class="special" /></li>
+                            <li><input type="reset" value="Reset" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</section>
+-->
+<!-- Footer -->
+<footer id="footer">
+    <ul class="icons">
+    </ul>
+    <p class="copyright">&copy; Pharmacy Management System. Credits: <a href="https://www.instagram.com/_aieqe_/">Aisultan Kuandykov</a></p>
+</footer>
+
+<!-- Scripts -->
+<script th:href="@{/js/jquery.min.js}"></script>
+<script th:href="@{/js/jquery.scrolly.min.js}"></script>
+<script th:href="@{/js/skel.min.js}"></script>
+<script th:href="@{/js/util.js}"></script>
+<!--[if lte IE 8]><script th:src="@{js/ie/respond.min.js}"></script><![endif]-->
+<script th:href="@{/js/main.js}"></script>
+
+</body>
+</html>

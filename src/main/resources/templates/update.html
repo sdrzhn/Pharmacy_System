@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css" href="/resources/static/css/main.css"/>
+</head>
+<body>
+
+<section id="four" class="wrapper">
+    <div class="inner">
+        <section>
+            <h4>Which one you want to change</h4>
+            <form action="#" th:action="@{/user/logged/update/{id}(id=${user.id})}" th:object="${user}" method="post">
+                <div class="row uniform">
+                    <div class="6u 12u$(xsmall)">
+                        <input type="text" th:field="*{firstName}" id="firstName" placeholder="FirstName">
+                        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        <input type="text" th:field="*{secondName}" id="secondName" placeholder="SecondName">
+                        <span th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"></span>
+                    </div>
+                    <div class="12u$">
+                        <div class="select-wrapper">
+                            <select name="demo-category" th:field="*{gender}" id="gender">
+                                <option value="">- Gender -</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="12u$">
+                        <input type="text" th:field="*{date_of_birth}" id="date_of_birth" placeholder="DateOfBirth">
+                        <span th:if="${#fields.hasErrors('date_of_birth')}" th:errors="*{date_of_birth}"></span>
+                    </div>
+                    <div class="12u$">
+                        <ul class="actions">
+                            <li><input type="submit" value="Change" class="special" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</section>
+</body>
+</html>

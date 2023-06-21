@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css" href="/resources/static/css/main.css"/>
+</head>
+<body>
+
+<section id="two" class="wrapper">
+    <div class="inner alt">
+            <div>
+                <section class="spotlight">
+                    <div class="image"><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="" /></div>
+                    <div class="content">
+                        <h3 th:text="${user.getEmail()}"></h3>
+                        <p th:text="${user.getFirstName()}"></p>
+                        <p th:text="${user.getSecondName()}"></p>
+                        <label>Gender: </label>
+                        <p th:text="${user.getGender()}"> </p>
+                        <label>Date of birth: </label>
+                        <p th:text="${user.getDate_of_birth()}"> </p>
+                        <p>Posts: </p>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Text</th>
+                                <th>Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="post : ${user.getPosts()}">
+                                <td th:text="${post.getText()}"></td>
+                                <td th:text="${post.getDate()}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section>
+                    <h5>Actions</h5>
+                    <div class="row">
+                        <div class="6u 12u$(medium)">
+                            <ul class="actions">
+                                <form class="6u 12u$(medium)" th:action="@{/user/logged/updateView}" method="get">
+                                    <input type="submit" value="Update" />
+                                </form>
+                                <form class="6u 12u$(medium)" th:action="@{/user/logged/delete}" method="post">
+                                    <input type="submit" value="Delete" />
+                                </form>
+                            </ul>
+                        </div>
+                        <div class="6u 12u$(medium)">
+                            <ul class="actions vertical">
+                                <section>
+                                    <form action="#" th:action="@{/user/logged/postCreate}" th:object="${post}" method="post">
+                                        <div class="row uniform">
+                                            <div class="12u$">
+                                                <textarea name="demo-message" th:field="*{text}" id="posttext" placeholder="Enter your post" rows="6"></textarea>
+                                            </div>
+                                            <div class="12u$">
+                                                <ul class="actions">
+                                                    <li><input type="submit" value="Create new post" class="special" /></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </section>
+                            </ul>
+                        </div>
+                        <form class="6u 12u$(medium)" th:action="@{/logout}" method="post">
+                            <input type="submit" value="Logout" />
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+
+    </div>
+</section>
+
+
+
+
+</body>
+</html>
